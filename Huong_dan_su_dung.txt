@@ -1,0 +1,68 @@
+Họ tên sv: 1.Nguyễn Chí Thanh 16521118
+	   2.
+	   3.
+
+-------------------Hướng dẫn sử dụng chương trình-----------------
+I/ Các thư viện cần có : 
+1. numpy
+2. pandas
+3. sys
+4. pickle
+5. sklearn 
+
+II/ Cách biên dịch :
+<main.py><tùy chọn><file_path hoặc data>
+
+### LƯU Ý :
+Chạy tùy chọn '1' trước khi chạy các tùy chọn khác để cho mô hình được huấn luyện và lưu trọng số tại file "rfc_model_trained.sav" để load cho các chức năng khác.
+###
+
+Tùy chọn : 
+'1'  : Huấn luyện mô hình phân lớp  
+file_path = 'data.csv'
+Ví dụ:    "python main.py 1 data.csv"
+
+'2'  : Phân lớp cho một mẫu bất kỳ (nhập từ bàn phím).
+data = Array(12,int) ( 12 số interger liên tiếp lần lượt tương ứng với x1,y1,z1,x2,y2,z2,x3,y3,z3,x4,y4,z4 cách nhau bởi dấu cách ' ' )
+Ví dụ:  "python main.py 2 1 2 3 4 5 6 7 8 9 10 11 12"
+
+'3' : Phân lớp cho nhiều mẫu (nhập thông qua tập tin).
+file_path = Đường dẫn tới file .txt chứa các các mẫu kiểm tra
+Định dang file test :
+Mỗi mẫu là 1 dòng chứa dãy 12 số interger nằm cách nhau bởi 1 khoảng trắng ' '
+
+Ví dụ : 
+test_file.txt :   
+1 2 3 4 5 6 7 8 9 10 11 12
+-1 -2 -3 -5 8 9 10 -12 -30 80 60 -890
+
+"python main.py 3 test_file.txt"
+
+'4' : Đánh giá kết quả phân lớp theo độ đo Precision, Recall và F-measure
+Đánh giá kết quả phân lớp bởi k file_test
+data = k với k là 1 số nguyên dương là ước của 41408 ví dụ như 2,4,8,16..... ( Vì test data có số mẫu là 41408 )
+
+Ví dụ :
+"python main.py 4 8"
+
+III/ Các chức năng 
+1/ Huấn luyện mô hình phân lớp
+- Người dùng huấn luyện mô hình bởi 1 file data, ở đây file data là Body Postures and Movements (PUC-Rio) Data Set với đường dẫn là "data.txt"
+- Model sẽ được train sau đó lưu trọng số tại file "rfc_model_trained.sav"
+2/ Phân lớp 1 mẫu bất kỳ ( nhập từ bàn phím)
+- Người dùng cho model dự đoán mẫu bất kỳ nhập từ bàn phím, model sẽ dự đoán dáng bộ từ mẫu và lưu kết quả lại ở file "result_file.txt"
+3/ Phân lớp cho nhiều mẫu (nhập thông qua tập tin )
+- Người dùng cho model dự đoán nhiều mẫu bằng 1 tập tin. Các mẫu sẽ được nhập ở tập tin trên mỗi dòng. Model sẽ dự đoán dáng bộ từ các mẫu và lưu kết quả lại ở file "result_file.txt"
+4/ Đánh giá kết quả phân lớp theo độ đo Precision, Recall và F-measure
+- Người dùng nhập 1 số k để chia data test ( ở đây là 1/4 của data Set Body Postures and Movements ) thành k phần bằng nhau. Từ đó đánh giá model trên từng phần qua các độ đo rồi lưu 
+kết quả ở file "Evaluate_Model.txt" , các file data test sẽ lưu nhị phân tại các file test_i với i từ 0 đến k - 1.
+
+
+
+
+
+
+
+
+
+
